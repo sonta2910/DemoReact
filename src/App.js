@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import {Route, Routes} from "react-router-dom";
+import HomeTour from "./tour/HomeTour";
+import TourDetail from "./tour/TourDetail";
+import FormCreate from "./tour/FormCreate";
+import FormUpdate from "./tour/FormUpdate";
+import DeleteTour from "./tour/DeleteTour"; // Import component từ file khác
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+       <Routes>
+           <Route path={"/create-tour"} element={<FormCreate/>}></Route>
+           <Route path={"/update-tour/:id"} element={<FormUpdate/>}></Route>
+           <Route path={"/delete-tour/:id"} element={<DeleteTour/>}></Route>
+           <Route path={"/detail/:id"} element={<TourDetail/>}></Route>
+           <Route path={"/"} element={<HomeTour/>}></Route>
+       </Routes>
+   </>
   );
+
 }
 
 export default App;
